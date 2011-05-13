@@ -1,0 +1,25 @@
+<h1>Documents Imported</h1>
+<%= link_to 'Import from a new source', new_import_path %>
+<table>
+  <tr style = "vertical-align: middle;" class="yellow">
+    <td class = "middle">Id</td>
+    <td class = "middle">Name</td>
+    <td class = "middle">Size (KB)</td>
+    <td class = "middle">Created At</td>
+    <td class = "middle">&nbsp;</td>
+    <td class = "middle">&nbsp;</td>
+    <td class = "middle">&nbsp;</td>
+  </tr>
+  <% for import in @paginated_imports %>
+    <tr>
+      <td class = "middle"><%= import.id %></td>
+      <td class = "middle"><%= import.source_file_name %></td>
+      <td class = "middle"><%= import.source_file_size / 1000 %></td>
+      <td class = "middle"><%= import.created_at.strftime("%b %d, %Y") %></td>
+      <td class = "middle"><%= link_to 'Show', import %></td>
+      <!--<td class = "middle"><%= link_to 'Edit', edit_import_path(import) %></td>
+      <td class = "middle"><%= link_to 'Delete', import, :confirm => 'Are you sure?', :method => :delete %></td>-->
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @paginated_imports %>

@@ -1,3 +1,4 @@
 class Import < ActiveRecord::Base
-  has_dynamic_attributes :column_name => :data
+  has_attached_file :source
+  has_many :import_datas
 end

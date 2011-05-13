@@ -1,7 +1,7 @@
 class CreateImports < ActiveRecord::Migration
   def self.up
     create_table :imports do |t|
-      t.text :data
+      t.string :parse_status
 
       t.timestamps
     end
