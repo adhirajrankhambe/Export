@@ -52,6 +52,14 @@ module DynamicAttributes
       return false if self.class.column_names.include?(attr.to_s)
       true
     end
+
+    # Return a list of valid dynamic attributes for the given model.
+    def dynamic_attributes
+      attrs = read_attribute_without_dynamic_attributes(dynamic_attributes_options[:column_name].to_s)
+      attrs = attrs.nil? ? nil : YAML.load(attrs).symbolize_keys! unless attrs.is_a? Hash
+      return nil if attrs.blank?
+      return attrs
+    end
     
     # This overrides the attributes= defined in ActiveRecord::Base
     # The only difference is that this doesn't check to see if the
