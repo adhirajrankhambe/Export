@@ -15,6 +15,7 @@ div#container{width:700px;margin:0 auto}
 div#content{float:right;width:500px}
 div#navigation{float:left;width:200px}
 div#extra{clear:both;width:100%}
+div#content_without_navigation{float:right;width:700px}
 
 table {font: 11px/24px Verdana, Arial, Helvetica, sans-serif;border-collapse: collapse;width: 500px;}
 th {padding: 0 0.5em;text-align: left;}

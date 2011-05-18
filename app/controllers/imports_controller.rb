@@ -15,9 +15,10 @@ class ImportsController < ApplicationController
   # GET /imports/1.xml
   def show
     @import = Import.find(params[:id])
+    @import_datas = @import.import_datas
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => false } # show.html.erb
       format.xml  { render :xml => @import }
     end
   end

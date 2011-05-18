@@ -1,3 +1,37 @@
-
-<%= link_to 'Edit', edit_import_path(@import) %> |
-<%= link_to 'Back', imports_path %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>Export</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <%= stylesheet_link_tag 'application' %>
+  </head>
+  <body>
+    <div id="container">
+      <%= render :partial => 'layouts/header' %>
+      <div id="wrapper">
+        <div id="content_without_navigation">
+          <%= link_to 'Back', imports_path %>
+          <% import_data_keys = @import_datas.first.dynamic_attributes.keys %>
+          <h1>Data Imported</h1>
+          <table>
+            <tr style = "vertical-align: middle;" class="yellow">
+              <% for import_data_key in import_data_keys %>
+                <td class = "middle"><%= import_data_key %></td>
+              <% end %>
+            </tr>
+            <% for import_data in @import_datas %>
+              <tr>
+                <% for import_data_key in import_data_keys %>
+                  <td class = "middle"><%= import_data[import_data_key] %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </table>
+          <%= link_to 'Back', imports_path %>
+        </div>
+      </div>
+      <%= render :partial => 'layouts/about' %>
+      <%= render :partial => 'layouts/footer' %>
+    </div>
+  </body>
+</html>
