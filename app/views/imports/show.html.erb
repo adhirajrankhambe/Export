@@ -11,22 +11,26 @@
       <div id="wrapper">
         <div id="content_without_navigation">
           <%= link_to 'Back', imports_path %>
-          <% import_data_keys = @import_datas.first.dynamic_attributes.keys %>
-          <h1>Data Imported</h1>
-          <table>
-            <tr style = "vertical-align: middle;" class="yellow">
-              <% for import_data_key in import_data_keys %>
-                <td class = "middle"><%= import_data_key %></td>
-              <% end %>
-            </tr>
-            <% for import_data in @import_datas %>
-              <tr>
+          <% unless @import_datas.blank? %>
+            <% import_data_keys = @import.data_attributes.split(',') %>
+            <h1>Data Imported</h1>
+            <table>
+              <tr style = "vertical-align: middle;" class="yellow">
                 <% for import_data_key in import_data_keys %>
-                  <td class = "middle"><%= import_data[import_data_key] %></td>
+                  <td class = "middle"><%= import_data_key.capitalize %></td>
                 <% end %>
               </tr>
-            <% end %>
-          </table>
+              <% for import_data in @import_datas %>
+                <tr>
+                  <% for import_data_key in import_data_keys %>
+                    <td class = "middle"><%= import_data[import_data_key] %></td>
+                  <% end %>
+                </tr>
+              <% end %>
+            </table>
+          <% else %>
+            <h1>Data conversion is in progress...</h1>
+          <% end %>
           <%= link_to 'Back', imports_path %>
         </div>
       </div>

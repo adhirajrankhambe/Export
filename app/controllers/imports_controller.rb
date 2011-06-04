@@ -108,6 +108,10 @@ class ImportsController < ApplicationController
       end
     end
 
+    import.parse_status = "Completed"
+    import.data_attributes = sanitized_keys.join(',')
+    import.save
+
     redirect_to :action => "index"
   end
 end

@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110513134733) do
 
   create_table "imports", :force => true do |t|
     t.string   "parse_status"
+    t.text     "data_attributes"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "source_file_name"
